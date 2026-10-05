@@ -223,7 +223,7 @@ function update(dt){
   player.x+=player.vx;
   player.x=Math.max(95,Math.min(W-95-player.w,player.x));
 
-  distance+=speed*dt*.055;
+  distance = Math.max(0, distance + speed * dt * 0.055);
   score+=speed*dt*.012;
   roadOffset=(roadOffset+speed*dt*.07)%80;
 
@@ -371,7 +371,7 @@ function render(){
   // speed indicator
   ctx.fillStyle='rgba(255,255,255,.7)';
   ctx.font='8px "Press Start 2P"';
-  ctx.fillText('DISTÂNCIA '+Math.floor(distance)+'m',14,20);
+  ctx.fillText('DISTÂNCIA '+Math.max(0, Math.floor(distance))+'m',14,20);
 }
 
 function loop(t){
